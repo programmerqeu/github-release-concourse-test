@@ -1,0 +1,39 @@
+---
+jobs:
+- name: tag
+  plan:
+  - get: git
+  - put: git
+    params:
+      repository: git/github-release-concourse-test
+      tag: {{tag}}
+      tag_prefix: v
+
+- name: github-release
+  plan:
+  - get: git
+    passed: [tag]
+  - task: tag-name
+    file: git/tagname.yml
+  - put: github-release
+    params:
+      name: tag-name/tagname
+      tag: tag-name/tagname
+      globs:
+      - git/some-file
+      - git/some-file-2
+
+resources:
+- name: git
+  type: git
+  source:
+    uri: https://github.com/robdimsdale/github-release-concourse-test.git
+    branch: master
+    private_key: {{git-repo-private-key}}
+
+- name: github-release
+  type: github-release
+  source:
+    access_token: {{github-release-access-token}}
+    repository: github-release-concourse-test
+    user: robdimsdale

@@ -1,0 +1,14 @@
+---
+platform: linux
+
+image: docker:///robdimsdale/garagepi-1.5
+
+inputs:
+- name: git
+
+run:
+  path: sh
+  args:
+  - -c
+  - |
+    git -C git tag | tail -1 > tagname
