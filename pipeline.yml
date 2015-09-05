@@ -27,7 +27,7 @@ resources:
 - name: git
   type: git
   source:
-    uri: https://github.com/robdimsdale/github-release-concourse-test.git
+    uri: git@github.com:robdimsdale/github-release-concourse-test.git
     branch: master
     private_key: {{git-repo-private-key}}
 
