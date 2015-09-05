@@ -6,7 +6,7 @@ jobs:
   - put: git
     params:
       repository: git/github-release-concourse-test
-      tag: {{tag}}
+      tag: git/VERSION
       tag_prefix: v
 
 - name: github-release
