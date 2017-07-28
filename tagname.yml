@@ -1,7 +1,7 @@
 ---
 platform: linux
 
-image: docker:///robdimsdale/garagepi-1.5
+image: docker:///vergissberlin/bashlib
 
 inputs:
 - name: git
