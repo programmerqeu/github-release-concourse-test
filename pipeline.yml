@@ -27,7 +27,7 @@ resources:
 - name: git
   type: git
   source:
-    uri: git@github.com:robdimsdale/github-release-concourse-test.git
+    uri: git@github.com:vergissberlin/github-release-concourse-test.git
     branch: master
     private_key: {{git-repo-private-key}}
 
@@ -36,4 +36,4 @@ resources:
   source:
     access_token: {{github-release-access-token}}
     repository: github-release-concourse-test
-    user: robdimsdale
+    user: vergissberlin
