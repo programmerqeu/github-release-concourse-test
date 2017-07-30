@@ -1,4 +1,19 @@
 ---
+  resources:
+  - name: git
+    type: git
+    source:
+      uri: git@github.com:vergissberlin/github-release-concourse-test.git
+      branch: master
+      private_key: {{git-repo-private-key}}
+
+  - name: github-release
+    type: github-release
+    source:
+      access_token: {{github-release-access-token}}
+      repository: github-release-concourse-test
+      user: vergissberlin
+
 jobs:
 - name: tag
   plan:
@@ -22,18 +37,3 @@ jobs:
       globs:
       - git/some-file
       - git/some-file-2
-
-resources:
-- name: git
-  type: git
-  source:
-    uri: git@github.com:vergissberlin/github-release-concourse-test.git
-    branch: master
-    private_key: {{git-repo-private-key}}
-
-- name: github-release
-  type: github-release
-  source:
-    access_token: {{github-release-access-token}}
-    repository: github-release-concourse-test
-    user: vergissberlin
